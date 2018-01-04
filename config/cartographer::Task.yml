@@ -17,9 +17,9 @@ cameraCalibration:
   fy: 838.56569
   cx: 509.74846
   cy: 376.99711
-  d0: -0.348848 
-  d1: 0.139364 
-  d2: -0.000173 
+  d0: -0.348848
+  d1: 0.139364
+  d2: -0.000173
   d3: -0.000284
   width: 1024
   height: 768
@@ -215,7 +215,7 @@ ptu_rotation_offset:
 # Translation vector from pan tilt unit to desired rover point
 ptu_to_center:
   data:
-  - 0.138 
+  - 0.138
   - -0.005
   - 1.86 # to the top plate it is 1.286
 # Obstacles the rover can tolerate when there is no sinkage [m] # TBD
@@ -223,7 +223,7 @@ rover_normal_clearance: 0.22
 # Slope the rover can travel in nominal case [rad]
 rover_normal_gradeability: 0.33
 # How many normal cell a slope map cell will contain (was 8)
-slope_map_scale: 8 
+slope_map_scale: 8
 # Maximum cost added by traversable slope
 slope_max_cost: 4.0
 

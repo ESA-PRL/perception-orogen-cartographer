@@ -1,6 +1,5 @@
 <package>
   <description brief="This orogen package implments the cartographer library in the rock framewrok">
-  
   </description>
   <author>Marco Pagnamenta/marco.pagnamenta@esa.int</author>
   <license></license>
@@ -15,11 +14,4 @@
   <depend package="perception/cartographer" />
   <depend package="drivers/orogen/aggregator" />
   <depend package="drivers/orogen/transformer" />
-  <!--
-   To add any dependencies use the depend tag
-  <depend package="dummy-dependency-0" />
-	...
-  <depend package="dummy-dependency-n-1" />
-  <depend package="dummy-dependency-n" />
-  -->
 </package>
