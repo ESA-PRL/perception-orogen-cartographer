@@ -373,16 +373,12 @@ void Task::updateHook()
             cost_map.getCostMap().copyTo(temp_cost1);
 
             temp_cost1(cv::Rect(_envire_origin.get(), _envire_origin.get(),_envire_size.get()+1,_envire_size.get()+1)).copyTo(temp_cost2); // only terrain region
-            _global_safety_offset.get()/_global_map_resolution.get();
             temp_cost2.convertTo(temp_cost2, CV_8UC1);
 
             no_cost1 = global_height_map.getGlobalMap();
             no_cost1(cv::Rect(_envire_origin.get(), _envire_origin.get(),_envire_size.get()+1,_envire_size.get()+1)).copyTo(no_cost2);
 
             temp_cost2.setTo(0,no_cost2!=no_cost2);
-
-            envire::TraversabilityGrid::ArrayType& travData =
-                mpTravGrid->getGridData(envire::TraversabilityGrid::TRAVERSABILITY);
 
             // set only the same data that have been updated with the cost
             int cost;
