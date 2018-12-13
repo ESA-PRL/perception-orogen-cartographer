@@ -16,6 +16,7 @@
 #include <cartographer/globalMap.hpp>
 #include <cartographer/costMap.hpp>
 
+#include <base-logging/Logging.hpp>
 
 namespace envire {
     class Environment;

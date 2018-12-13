@@ -94,23 +94,22 @@ bool Task::configureHook()
     mpTravData = boost::shared_ptr<envire::TraversabilityGrid::ArrayType>(&travData, NullDeleter());
 
     trav->setTraversabilityClass(0, envire::TraversabilityClass(0.5));
-    std::cout << "Setting class #0 to 0.5 traversability."<< std::endl;
+    LOG_DEBUG_S << "Setting class #0 to 0.5 traversability.";
 
     for (int i = 0; i < SBPL_MAX_COST; ++i)
     {
         sbplCostToClassID[i] = i+2;
-        //std::cout << "Mapping " << i+1 << " to " << i+2 << std::endl;
+        //LOG_DEBUG_S << "Mapping " << i+1 << " to " << i+2;
     }
     sbplCostToClassID[SBPL_MAX_COST] = 1;
-    //std::cout << "Mapping " << SBPL_MAX_COST+1 << " to " << 1 << std::endl;
+    //LOG_DEBUG_S << "Mapping " << SBPL_MAX_COST+1 << " to " << 1;
 
     // ASSOCIATING CLASS ID WITH TRAVERSABILITY
 
     double travVal;
     // class 1 reserved for obstacle (will be used instead of 21)
     trav->setTraversabilityClass(1, envire::TraversabilityClass(0.0));
-    std::cout << "Setting class #" << 1
-        <<  " to " << 0.0 << " traversability." << std::endl;
+    LOG_DEBUG_S << "Setting class #1 to 0.0 traversability.";
 
     int cost;
     // TODO: MAY SKIP CLASSES BELOW MIN_COST IN ORDER NOT TO BIAS UNKNOWN AREAS
@@ -121,8 +120,8 @@ bool Task::configureHook()
         travVal = ((double)(SBPL_MAX_COST+1 - cost));
         travVal /= SBPL_MAX_COST;
         trav->setTraversabilityClass(sbplCostToClassID[cost-1], envire::TraversabilityClass(travVal));
-        std::cout << "Setting class #" << sbplCostToClassID[cost-1]
-            <<  " to " << travVal << " traversability." << std::endl;
+        LOG_DEBUG_S << "Setting class #" << sbplCostToClassID[cost-1]
+            <<  " to " << travVal << " traversability.";
     }
 
     for(int x=0; x < Nrow;  x++)
@@ -481,14 +480,13 @@ void Task::updateHook()
         t1[15] = base::Time::now();
 
         for(int iii = 1; iii<16; iii++)
-            std::cout << "time" << iii << ": " << (t1[iii]-t1[iii-1]) << std::endl;
+            LOG_DEBUG_S << "time" << iii << ": " << (t1[iii]-t1[iii-1]);
 
         bool tmpbool = true;
         _sync_out.write(tmpbool);
         sync_count++;
 
         _goal.write(goal_rbs);
-
     }
 }
 
@@ -525,15 +523,11 @@ void Task::stopHook()
       cv::FileStorage file4("/home/fjalar/Desktop/cost.xml", cv::FileStorage::WRITE);
       cv::Mat e = cost_map.getCostMap();
       file4 << "e" << e;*/
-
-    std::cout << "stopped" << std::endl;
 }
 
 void Task::cleanupHook()
 {
     TaskBase::cleanupHook();
-    std::cout << "cleaned" << std::endl;
-
 }
 
 // borrowed from https://github.com/exoter-rover/slam-orogen-icp/blob/master/tasks/GIcp.cpp
