@@ -3,7 +3,6 @@
 #ifndef CARTOGRAPHER_TASK_TASK_HPP
 #define CARTOGRAPHER_TASK_TASK_HPP
 
-#include <opencv/cv.h>
 #include <opencv2/highgui/highgui.hpp>
 
 #include <base/samples/Frame.hpp>
