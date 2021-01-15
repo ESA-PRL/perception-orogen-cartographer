@@ -4,7 +4,6 @@ name "cartographer"
 
 using_task_library "transformer"
 using_library "cartographer"
-using_library "pcl_common-1.10"
 using_library "frame_helper"
 using_library "envire"
 
